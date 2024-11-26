@@ -2,6 +2,7 @@ import { FC, useMemo } from 'react';
 import { TodayProps } from './Today.props';
 import classNames from 'classnames';
 import styles from './Today.module.scss';
+import { Paragraph } from '../Paragraph';
 
 export const Today: FC<TodayProps> = ({
   temperature,
@@ -19,14 +20,18 @@ export const Today: FC<TodayProps> = ({
     <div {...props} className={todayCassname}>
       <div className={styles.today__block__main__info}>
         <div className={styles.today__block__temp}>
-          <div className={styles.temperature}>{temperature}°</div>
-          <div className={styles.title}>Сегодня</div>
+          <Paragraph text={`${temperature}°`} color='accent' size={96} />
+          <Paragraph text='Сегодня' color='primary' size={40} />
         </div>
         <img className={styles.picture} src={image} alt='weather-icon' />
       </div>
-
-      <div className={styles.time}>Время: {time}</div>
-      <div className={styles.city}>Город: {city}</div>
+      <Paragraph
+        text={`Время: ${time}`}
+        color='secondary'
+        size={25}
+        className={styles.time}
+      />
+      <Paragraph text={`Город: ${city}`} color='secondary' size={25} />
     </div>
   );
 };
