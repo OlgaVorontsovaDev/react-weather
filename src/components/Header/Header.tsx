@@ -1,6 +1,6 @@
 import Select, { CSSObjectWithLabel } from 'react-select';
 import { useState } from 'react';
-import AppLogo from '../../../public/Logo.svg';
+import AppLogo from '/Logo.svg';
 import ThemeToggler from '../../assets/icons/themeToggler.svg';
 import { OptionType } from './Header.types';
 import styles from './Header.module.scss';

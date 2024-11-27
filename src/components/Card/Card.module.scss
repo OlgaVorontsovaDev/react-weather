@@ -1,0 +1,13 @@
+@use '../../styles/variables.scss' as v;
+
+.card {
+	width: 150px;
+	height: 200px;
+	background-color: v.$card-background-color;
+	border-radius: 12px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: start;
+}
