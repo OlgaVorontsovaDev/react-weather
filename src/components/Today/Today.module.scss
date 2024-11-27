@@ -1,0 +1,28 @@
+@use '../../styles/variables' as v;
+
+.today__block {
+  width: 400px;
+  height: 300px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: v.$box-shadow;
+  background-color: v.$background-color;
+  padding: 20px;
+
+  .today__block__main__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .picture {
+    height: 120px;
+    width: auto;
+  }
+
+  .time {
+    margin-bottom: 10px;
+  }
+}

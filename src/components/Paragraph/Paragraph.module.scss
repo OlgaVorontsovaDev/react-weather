@@ -1,0 +1,39 @@
+@use '../../styles/variables' as v;
+
+.paragraph__ {
+  &96 {
+    font-size: 96px;
+  }
+
+  &40 {
+    font-size: 40px;
+  }
+
+  &25 {
+    font-size: 25px;
+  }
+
+  &18 {
+    font-size: 18px;
+  }
+
+  &14 {
+    font-size: 14px;
+  }
+
+  &13 {
+    font-size: 13px;
+  }
+
+  &accent {
+    color: v.$accent-color;
+  }
+
+  &primary {
+    color: v.$text-primary-color;
+  }
+
+  &secondary {
+    color: v.$text-secondary-color;
+  }
+}
