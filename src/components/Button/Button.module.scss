@@ -1,0 +1,26 @@
+@use '../../styles/variables.scss' as v;
+
+.button {
+  padding: 10px 20px;
+  background-color: v.$background-color;
+  box-shadow: v.$box-shadow;
+  border: none;
+  border-radius: 10px;
+  color: v.$text-primary-color;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: v.$card-background-color;
+  }
+}
+
+.active {
+  background-color: v.$accent-color;
+  color: v.$active-text-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: v.$text-primary-color;
+  }
+}

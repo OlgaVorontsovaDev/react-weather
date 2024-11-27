@@ -9,5 +9,5 @@ export const CardPaper: FC<HTMLAttributes<HTMLDivElement>> = ({
   const cardPaperClassname = useMemo(() => {
     return classNames(styles.card__paper, className);
   }, [className]);
-  return <div {...props} className={cardPaperClassname}></div>;
+  return <div {...props} className={cardPaperClassname} />;
 };

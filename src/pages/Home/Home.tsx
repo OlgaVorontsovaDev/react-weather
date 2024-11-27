@@ -7,6 +7,7 @@ import RainSun from '../../assets/icons/rain-sun.svg';
 import { Card } from '../../components/Card';
 import styles from './Home.module.scss';
 import { CardPaper } from '../../components/CardPaper';
+import { Button } from '../../components/Button';
 
 const WEEK_WEATHER_DATA: CardType[] = [
   {
@@ -95,6 +96,9 @@ export const Home = () => {
           );
         })}
       </CardPaper>
+
+      <Button>Кнопка</Button>
+      <Button isActive>Кнопка</Button>
     </>
   );
 };
