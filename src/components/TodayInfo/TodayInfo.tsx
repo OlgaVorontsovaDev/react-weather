@@ -1,31 +1,8 @@
 import { FC, HTMLAttributes, useMemo } from 'react';
 import classNames from 'classnames';
 import { WeatherFeatures } from '../WeatherFeatures';
-import { WeatherFeaturesType } from '../WeatherFeatures/WeatherFeatures.props';
+import { WEATHER_DATA } from '../../mocks/WEATHER_DATA';
 import styles from './TodayInfo.module.scss';
-
-const DATA: WeatherFeaturesType[] = [
-  {
-    imageType: 'temp',
-    title: 'Температура',
-    description: '20° - ощущается как 17°',
-  },
-  {
-    imageType: 'pressure',
-    title: 'Давление',
-    description: '765 мм ртутного столба - нормальное',
-  },
-  {
-    imageType: 'precipitation',
-    title: 'Осадки',
-    description: 'Без осадков',
-  },
-  {
-    imageType: 'wind',
-    title: 'Ветер',
-    description: '3 м/с юго-запад - легкий ветер',
-  },
-];
 
 export const TodayInfo: FC<HTMLAttributes<HTMLDivElement>> = ({
   className,
@@ -37,7 +14,7 @@ export const TodayInfo: FC<HTMLAttributes<HTMLDivElement>> = ({
 
   return (
     <div {...props} className={todayInfoClassname}>
-      {DATA.map((element) => {
+      {WEATHER_DATA.map((element) => {
         return (
           <WeatherFeatures
             key={element.title}
