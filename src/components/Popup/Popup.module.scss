@@ -1,0 +1,61 @@
+@use '../../styles/variables' as v;
+
+.backdrop {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.popup {
+  margin: auto;
+  width: 750px;
+  height: 300px;
+  border-radius: 16px;
+  border: none;
+  background-color: v.$background-color;
+  padding: 40px;
+  z-index: 10;
+  position: absolute;
+  top: calc(50% - 150px);
+  left: calc(50% - 325px);
+
+  .close__icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  .popup__data {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .main__info {
+    display: flex;
+    flex-direction: column;
+    height: 212px;
+    justify-content: space-between;
+    img {
+      width: 53px;
+      height: auto;
+    }
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
