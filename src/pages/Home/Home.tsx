@@ -6,6 +6,7 @@ import Rain from '../../assets/icons/rain.svg';
 import RainSun from '../../assets/icons/rain-sun.svg';
 import { Card } from '../../components/Card';
 import styles from './Home.module.scss';
+import { CardPaper } from '../../components/CardPaper';
 
 const WEEK_WEATHER_DATA: CardType[] = [
   {
@@ -78,7 +79,8 @@ export const Home = () => {
         />
         <TodayInfo />
       </div>
-      <div>
+
+      <CardPaper>
         {WEEK_WEATHER_DATA.map((element) => {
           return (
             <Card
@@ -92,7 +94,7 @@ export const Home = () => {
             />
           );
         })}
-      </div>
+      </CardPaper>
     </>
   );
 };
