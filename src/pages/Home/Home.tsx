@@ -80,25 +80,31 @@ export const Home = () => {
         />
         <TodayInfo />
       </div>
-
-      <CardPaper>
-        {WEEK_WEATHER_DATA.map((element) => {
-          return (
-            <Card
-              key={element.date}
-              weekday={element.weekday}
-              date={element.date}
-              icon={element.icon}
-              temperature_day={element.temperature_day}
-              temperature_night={element.temperature_night}
-              description={element.description}
-            />
-          );
-        })}
-      </CardPaper>
-
-      <Button>Кнопка</Button>
-      <Button isActive>Кнопка</Button>
+      <div className={styles.filter}>
+        <div className={styles.buttons}>
+          <div className={styles.buttons__by__period}>
+            <Button isActive>На неделю</Button>
+            <Button>На месяц</Button>
+            <Button>На 10 дней</Button>
+          </div>
+          <Button>Отменить</Button>
+        </div>
+        <CardPaper>
+          {WEEK_WEATHER_DATA.map((element) => {
+            return (
+              <Card
+                key={element.date}
+                weekday={element.weekday}
+                date={element.date}
+                icon={element.icon}
+                temperature_day={element.temperature_day}
+                temperature_night={element.temperature_night}
+                description={element.description}
+              />
+            );
+          })}
+        </CardPaper>
+      </div>
     </>
   );
 };
