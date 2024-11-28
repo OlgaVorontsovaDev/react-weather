@@ -3,25 +3,25 @@
 
 .button {
   padding: 10px 20px;
-  background-color: var(--background-color);
+  background-color: var(#{--background-color-default});
   box-shadow: v.$box-shadow;
   border: none;
   border-radius: 10px;
-  color: var(--text-primary-color);
+  color: var(#{--text-primary-color-default});
   font-size: 18px;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: var(--card-background-color);
+    background-color: var(#{--card-background-color-default});
   }
 }
 
 .active {
   background-color: v.$accent-color;
-  color: var(--active-text-color);
+  color: var(#{--active-text-color-default});
   transition: color 0.3s ease;
 
   &:hover {
-    color: var(--text-primary-color);
+    color: var(#{--text-primary-color-default});
   }
 }

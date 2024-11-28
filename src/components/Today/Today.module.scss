@@ -7,7 +7,7 @@
   border-radius: 16px;
   border: none;
   box-shadow: v.$box-shadow;
-  background-color: var(--background-color);
+  background-color: var(#{--background-color-default});
   padding: 20px;
 
   .today__block__main__info {

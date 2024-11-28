@@ -12,20 +12,25 @@ $dark-card-background-color: #2e3035;
 $dark-active-text-color: #fff;
 $dark-paper-background-color: #4f4f4f;
 
-html[data-theme='light'] {
-  --background-color: #{$light-background-color};
-  --text-primary-color: #{$light-text-primary-color};
-  --text-secondary-color: #{$light-text-secondary-color};
-  --card-background-color: #{$light-card-background-color};
-  --active-text-color: #{$light-active-text-color};
-  --paper-background-color: #{$light-paper-background-color};
-}
+:root {
+  --background-color-default: #{$light-background-color};
+  --text-primary-color-default: #{$light-text-primary-color};
+  --text-secondary-color-default: #{$light-text-secondary-color};
+  --card-background-color-default: #{$light-card-background-color};
+  --active-text-color-default: #{$light-active-text-color};
+  --paper-background-color-default: #{$light-paper-background-color};
 
-html[data-theme='dark'] {
-  --background-color: #{$dark-background-color};
-  --text-primary-color: #{$dark-text-primary-color};
-  --text-secondary-color: #{$dark-text-secondary-color};
-  --card-background-color: #{$dark-card-background-color};
-  --active-text-color: #{$dark-active-text-color};
-  --paper-background-color: #{$dark-paper-background-color};
+  --background-color-light: #{$light-background-color};
+  --text-primary-color-light: #{$light-text-primary-color};
+  --text-secondary-color-light: #{$light-text-secondary-color};
+  --card-background-color-light: #{$light-card-background-color};
+  --active-text-color-light: #{$light-active-text-color};
+  --paper-background-color-light: #{$light-paper-background-color};
+
+  --background-color-dark: #{$dark-background-color};
+  --text-primary-color-dark: #{$dark-text-primary-color};
+  --text-secondary-color-dark: #{$dark-text-secondary-color};
+  --card-background-color-dark: #{$dark-card-background-color};
+  --active-text-color-dark: #{$dark-active-text-color};
+  --paper-background-color-dark: #{$dark-paper-background-color};
 }

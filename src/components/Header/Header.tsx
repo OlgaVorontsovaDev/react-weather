@@ -1,29 +1,16 @@
-import Select, { CSSObjectWithLabel } from 'react-select';
+import Select from 'react-select';
 import { useState } from 'react';
 import AppLogo from '/Logo.svg';
 import ThemeToggler from '../../assets/icons/themeToggler.svg';
 import { OptionType } from './Header.types';
+import { CITIES } from '../../mocks/CITIES';
+import { useTheme } from '../../hooks/useTheme';
+import { ThemeContextType, ThemeEnum } from '../../context/theme';
+import { getSelectorStyles } from '../../models/getSelectorStyles';
 import styles from './Header.module.scss';
 
-const OPTIONS = [
-  { value: 'Казань', label: 'Казань' },
-  { value: 'Сочи', label: 'Сочи' },
-  { value: 'Санкт-Петербург', label: 'Санкт-Петербург' },
-];
-
-const COLOR_STYLES = {
-  control: (base: CSSObjectWithLabel) => ({
-    ...base,
-    backgroundColor: '#DAE9FF',
-    width: '260px',
-    height: '37px',
-    border: 'none',
-    borderRadius: '10px',
-    zIndex: 100,
-  }),
-};
-
 export const Header = () => {
+  const { theme, toggleTheme }: ThemeContextType = useTheme();
   const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -33,6 +20,10 @@ export const Header = () => {
 
   const handleInputChange = (inputValue: string) => {
     setInputValue(inputValue);
+  };
+
+  const handleToggleTheme = () => {
+    toggleTheme(theme === ThemeEnum.LIGHT ? ThemeEnum.DARK : ThemeEnum.LIGHT);
   };
 
   return (
@@ -46,9 +37,10 @@ export const Header = () => {
           src={ThemeToggler}
           alt='theme-toggler'
           className={styles.themeToggler}
+          onClick={handleToggleTheme}
         />
         <Select
-          options={OPTIONS}
+          options={CITIES}
           value={selectedOption}
           onChange={handleChange}
           inputValue={inputValue}
@@ -56,8 +48,8 @@ export const Header = () => {
           onMenuOpen={() => {}}
           onMenuClose={() => {}}
           placeholder='Выбрать город ...'
-          styles={COLOR_STYLES}
-          defaultValue={OPTIONS[0]}
+          styles={getSelectorStyles(theme)}
+          defaultValue={CITIES[0]}
         />
       </div>
     </header>

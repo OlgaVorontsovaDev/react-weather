@@ -7,7 +7,7 @@
   padding: 20px;
   box-shadow: v.$box-shadow;
   border-radius: 0 0 16px 16px;
-  background-color: var(--background-color);
+  background-color: var(#{--paper-background-color-default});
   display: flex;
   flex-direction: row;
   justify-content: space-between;
