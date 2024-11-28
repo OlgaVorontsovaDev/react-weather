@@ -1,6 +1,6 @@
 @use '../../styles/variables' as v;
 
-.backdrop {
+.overlay {
   z-index: 5;
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@
   z-index: 10;
   position: absolute;
   top: calc(50% - 150px);
-  left: calc(50% - 325px);
+  left: calc(50% - 375px);
 
   .close__icon {
     position: absolute;
