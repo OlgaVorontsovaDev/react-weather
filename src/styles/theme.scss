@@ -1,0 +1,31 @@
+$light-background-color: #fff;
+$light-text-primary-color: #000000;
+$light-text-secondary-color: #939cb0;
+$light-card-background-color: #dae9ff;
+$light-active-text-color: #fff;
+$light-paper-background-color: #fff;
+
+$dark-background-color: #0d1117;
+$dark-text-primary-color: #ffffff;
+$dark-text-secondary-color: #939cb0;
+$dark-card-background-color: #2e3035;
+$dark-active-text-color: #fff;
+$dark-paper-background-color: #4f4f4f;
+
+html[data-theme='light'] {
+  --background-color: #{$light-background-color};
+  --text-primary-color: #{$light-text-primary-color};
+  --text-secondary-color: #{$light-text-secondary-color};
+  --card-background-color: #{$light-card-background-color};
+  --active-text-color: #{$light-active-text-color};
+  --paper-background-color: #{$light-paper-background-color};
+}
+
+html[data-theme='dark'] {
+  --background-color: #{$dark-background-color};
+  --text-primary-color: #{$dark-text-primary-color};
+  --text-secondary-color: #{$dark-text-secondary-color};
+  --card-background-color: #{$dark-card-background-color};
+  --active-text-color: #{$dark-active-text-color};
+  --paper-background-color: #{$dark-paper-background-color};
+}

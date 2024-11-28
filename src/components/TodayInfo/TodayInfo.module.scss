@@ -1,4 +1,5 @@
 @use '../../styles/variables' as v;
+@use '../../styles/theme.scss';
 
 .today__info {
   width: 750px;
@@ -6,7 +7,7 @@
   border-radius: 16px;
   border: none;
   box-shadow: v.$box-shadow;
-  background-color: v.$background-color;
+  background-color: var(--background-color);
   padding: 30px;
   background-image: url('../../assets/images/Cloud.png');
   background-repeat: no-repeat;
