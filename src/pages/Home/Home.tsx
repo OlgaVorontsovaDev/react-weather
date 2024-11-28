@@ -1,12 +1,9 @@
 import { Today } from '../../components/Today';
 import Sunny from '../../assets/icons/sunny-weather.svg';
 import { TodayInfo } from '../../components/TodayInfo';
-import RainSun from '../../assets/icons/rain-sun.svg';
 import { Card } from '../../components/Card';
 import { CardPaper } from '../../components/CardPaper';
 import { Button } from '../../components/Button';
-import { Popup } from '../../components/Popup';
-import { WEATHER_DATA } from '../../mocks/WEATHER_DATA';
 import { WEEK_WEATHER_DATA } from '../../mocks/WEEK_WEATHER_DATA';
 import styles from './Home.module.scss';
 
@@ -47,14 +44,6 @@ export const Home = () => {
           })}
         </CardPaper>
       </div>
-      <Popup
-        city='Санкт-Петербург'
-        image={RainSun}
-        temperature={12}
-        time='01:54'
-        weather_data={WEATHER_DATA}
-        weekday='Среда'
-      />
     </div>
   );
 };

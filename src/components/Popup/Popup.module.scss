@@ -1,4 +1,4 @@
-@use '../../styles/variables' as v;
+@use '../../styles/theme.scss';
 
 .overlay {
   z-index: 5;
@@ -16,7 +16,7 @@
   height: 300px;
   border-radius: 16px;
   border: none;
-  background-color: v.$background-color;
+  background-color: var(#{--background-color-default});
   padding: 40px;
   z-index: 10;
   position: absolute;

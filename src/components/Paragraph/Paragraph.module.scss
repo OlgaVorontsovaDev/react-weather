@@ -1,11 +1,12 @@
 @use '../../styles/variables' as v;
+@use '../../styles/theme.scss';
 
 .paragraph__ {
   &96 {
     font-size: 96px;
   }
 
-   &60 {
+  &60 {
     font-size: 60px;
   }
 
@@ -34,10 +35,10 @@
   }
 
   &primary {
-    color: v.$text-primary-color;
+    color: var(#{--text-primary-color-default});
   }
 
   &secondary {
-    color: v.$text-secondary-color;
+    color: var(#{--text-secondary-color-default});
   }
 }
