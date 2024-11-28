@@ -22,7 +22,7 @@ export const Popup: FC<PopupProps> = ({
 
   return (
     <>
-      <div className={styles.backdrop}></div>
+      <div className={styles.overlay}></div>
       <div {...props} className={popupClassname}>
         <CloseIcon className={styles.close__icon} />
         <div className={styles.popup__data}>
