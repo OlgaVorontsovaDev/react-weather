@@ -8,4 +8,5 @@ body {
   font-style: normal;
   position: relative;
   background-color: var(#{--background-color-default});
+  transition: background-color 0.3s ease;
 }
