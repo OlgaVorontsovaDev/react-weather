@@ -8,17 +8,21 @@ import { Button } from '../../components/Button';
 import { WEEK_WEATHER_DATA } from '../../mocks/WEEK_WEATHER_DATA';
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
 import { fetchWeather } from '../../store/thunks/fetchCurrentWeather';
+import { useCity } from '../../hooks/useCity';
 import styles from './Home.module.scss';
 
 export const Home = () => {
   const dispatch = useCustomDispatch();
+  const { city } = useCity();
   const { isLoading, response, weather } = useCustomSelector(
     (state) => state.currentWeatherSliceReducer
   );
 
   useEffect(() => {
-    dispatch(fetchWeather('vancouver'));
-  }, []);
+    if (city) {
+      dispatch(fetchWeather(city));
+    }
+  }, [city, dispatch]);
 
   return (
     <div className={styles.home__container}>

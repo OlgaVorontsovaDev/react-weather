@@ -1,29 +1,34 @@
-import Select from 'react-select';
-import { useState } from 'react';
+import { ChangeEvent, useState, KeyboardEvent } from 'react';
+import { Button } from '../Button';
 import AppLogo from '/Logo.svg';
 import ThemeToggler from '../../assets/icons/themeToggler.svg';
-import { OptionType } from './Header.types';
-import { CITIES } from '../../mocks/CITIES';
 import { useTheme } from '../../hooks/useTheme';
 import { ThemeContextType, ThemeEnum } from '../../context/theme';
-import { getSelectorStyles } from '../../models/getSelectorStyles';
+import { useCity } from '../../hooks/useCity';
+import { CityContextType } from '../../context/city';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const { theme, toggleTheme }: ThemeContextType = useTheme();
-  const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
+  const { city, setCity }: CityContextType = useCity();
   const [inputValue, setInputValue] = useState<string>('');
-
-  const handleChange = (selectedOption: OptionType | null) => {
-    setSelectedOption(selectedOption);
-  };
-
-  const handleInputChange = (inputValue: string) => {
-    setInputValue(inputValue);
-  };
 
   const handleToggleTheme = () => {
     toggleTheme(theme === ThemeEnum.LIGHT ? ThemeEnum.DARK : ThemeEnum.LIGHT);
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    setCity(inputValue);
+  };
+
+  const handleEnterKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleButtonClick();
+    }
   };
 
   return (
@@ -39,18 +44,17 @@ export const Header = () => {
           className={styles.themeToggler}
           onClick={handleToggleTheme}
         />
-        <Select
-          options={CITIES}
-          value={selectedOption}
-          onChange={handleChange}
-          inputValue={inputValue}
-          onInputChange={handleInputChange}
-          onMenuOpen={() => {}}
-          onMenuClose={() => {}}
-          placeholder='Выбрать город ...'
-          styles={getSelectorStyles(theme)}
-          defaultValue={CITIES[0]}
-        />
+        <div className={styles.input__group}>
+          <input
+            type='text'
+            placeholder='Введите название города...'
+            className={styles.input}
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyDown={handleEnterKeyDown}
+          />
+          <Button onClick={handleButtonClick}>Поиск</Button>
+        </div>
       </div>
     </header>
   );
