@@ -10,7 +10,7 @@ import styles from './Header.module.scss';
 
 export const Header = () => {
   const { theme, toggleTheme }: ThemeContextType = useTheme();
-  const { city, setCity }: CityContextType = useCity();
+  const { city, changeCity: setCity }: CityContextType = useCity();
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleToggleTheme = () => {

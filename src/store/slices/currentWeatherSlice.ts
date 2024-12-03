@@ -29,11 +29,11 @@ const initialState: CurrentWeather = {
     ],
     base: 'stations',
     main: {
-      temp: 280.32,
+      temp: 18.32,
       pressure: 1012,
       humidity: 81,
-      temp_min: 279.15,
-      temp_max: 281.15,
+      temp_min: 17.15,
+      temp_max: 21.15,
     },
     visibility: 10000,
     wind: {
