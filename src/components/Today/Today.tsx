@@ -3,12 +3,14 @@ import { TodayProps } from './Today.props';
 import classNames from 'classnames';
 import styles from './Today.module.scss';
 import { Paragraph } from '../Paragraph';
+import { WeatherPicture } from '../WeatherPicture';
 
 export const Today: FC<TodayProps> = ({
   temperature,
   image,
   humidity,
   city,
+  visibility,
   className,
   ...props
 }) => {
@@ -23,9 +25,13 @@ export const Today: FC<TodayProps> = ({
       <div className={styles.today__block__main__info}>
         <div className={styles.today__block__temp}>
           <Paragraph text={`${temp}°`} color='accent' size={96} />
-          <Paragraph text='Сегодня' color='primary' size={40} />
+          {city.length > 11 ? (
+            <Paragraph text={city} color='primary' size={25} />
+          ) : (
+            <Paragraph text={city} color='primary' size={36} />
+          )}
         </div>
-        <img className={styles.picture} src={image} alt='weather-icon' />
+        <WeatherPicture type={image} />
       </div>
       <Paragraph
         text={`Влажность: ${humidity}%`}
@@ -33,7 +39,11 @@ export const Today: FC<TodayProps> = ({
         size={25}
         className={styles.time}
       />
-      <Paragraph text={`Город: ${city}`} color='secondary' size={25} />
+      <Paragraph
+        text={`Видимость: ${visibility} метров`}
+        color='secondary'
+        size={25}
+      />
     </div>
   );
 };

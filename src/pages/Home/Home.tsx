@@ -24,18 +24,21 @@ export const Home = () => {
     }
   }, [city, dispatch]);
 
+  const millimiters = Math.floor(weather.main.pressure * 0.750063755419211);
+
   return (
     <div className={styles.home__container}>
       <div className={styles.home}>
         <Today
           temperature={weather.main.temp}
-          image={Sunny}
+          image={weather.weather[0].main}
           humidity={weather.main.humidity}
           city={weather.name}
+          visibility={weather.visibility}
         />
         <TodayInfo
           temperatureDescription={weather.main.temp}
-          pressureDescription={weather.main.pressure}
+          pressureDescription={millimiters}
           precipitationDescription={weather.weather[0].description}
           windDescription={weather.wind.speed}
         />

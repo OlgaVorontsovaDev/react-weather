@@ -23,6 +23,7 @@ export const Header = () => {
 
   const handleButtonClick = () => {
     setCity(inputValue);
+    setInputValue('');
   };
 
   const handleEnterKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
