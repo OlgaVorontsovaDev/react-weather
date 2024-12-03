@@ -3,7 +3,7 @@ import { HTMLAttributes } from 'react';
 type Today = {
   temperature: number;
   image: string;
-  time: string;
+  humidity: number;
   city: string;
 };
 

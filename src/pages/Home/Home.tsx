@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Today } from '../../components/Today';
 import Sunny from '../../assets/icons/sunny-weather.svg';
 import { TodayInfo } from '../../components/TodayInfo';
@@ -5,19 +6,35 @@ import { Card } from '../../components/Card';
 import { CardPaper } from '../../components/CardPaper';
 import { Button } from '../../components/Button';
 import { WEEK_WEATHER_DATA } from '../../mocks/WEEK_WEATHER_DATA';
+import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
+import { fetchWeather } from '../../store/thunks/fetchCurrentWeather';
 import styles from './Home.module.scss';
 
 export const Home = () => {
+  const dispatch = useCustomDispatch();
+  const { isLoading, response, weather } = useCustomSelector(
+    (state) => state.currentWeatherSliceReducer
+  );
+
+  useEffect(() => {
+    dispatch(fetchWeather('vancouver'));
+  }, []);
+
   return (
     <div className={styles.home__container}>
       <div className={styles.home}>
         <Today
-          temperature={20}
+          temperature={weather.main.temp}
           image={Sunny}
-          time='21:54'
-          city='Санкт-петербург'
+          humidity={weather.main.humidity}
+          city={weather.name}
         />
-        <TodayInfo />
+        <TodayInfo
+          temperatureDescription={weather.main.temp}
+          pressureDescription={weather.main.pressure}
+          precipitationDescription={weather.weather[0].description}
+          windDescription={weather.wind.speed}
+        />
       </div>
       <div className={styles.filter}>
         <div className={styles.buttons}>

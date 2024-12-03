@@ -7,7 +7,7 @@ import { Paragraph } from '../Paragraph';
 export const Today: FC<TodayProps> = ({
   temperature,
   image,
-  time,
+  humidity,
   city,
   className,
   ...props
@@ -16,17 +16,19 @@ export const Today: FC<TodayProps> = ({
     return classNames(styles.today__block, className);
   }, [className]);
 
+  const temp = Math.floor(temperature);
+
   return (
     <div {...props} className={todayCassname}>
       <div className={styles.today__block__main__info}>
         <div className={styles.today__block__temp}>
-          <Paragraph text={`${temperature}°`} color='accent' size={96} />
+          <Paragraph text={`${temp}°`} color='accent' size={96} />
           <Paragraph text='Сегодня' color='primary' size={40} />
         </div>
         <img className={styles.picture} src={image} alt='weather-icon' />
       </div>
       <Paragraph
-        text={`Время: ${time}`}
+        text={`Влажность: ${humidity}%`}
         color='secondary'
         size={25}
         className={styles.time}
