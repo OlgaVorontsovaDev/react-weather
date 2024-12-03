@@ -1,8 +1,8 @@
 import { HTMLAttributes } from 'react';
 
 type Paragraph = {
-  text: string;
-  size: 96 | 60 | 40 | 25 | 18 | 14 | 13;
+  text: string | number;
+  size: 96 | 60 | 40| 36 | 25 | 18 | 14 | 13;
   color: 'accent' | 'primary' | 'secondary';
 };
 

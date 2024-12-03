@@ -1,10 +1,14 @@
-import { FC, HTMLAttributes, useMemo } from 'react';
+import { FC, useMemo } from 'react';
 import classNames from 'classnames';
 import { WeatherFeatures } from '../WeatherFeatures';
-import { WEATHER_DATA } from '../../mocks/WEATHER_DATA';
+import { TodayInfoProps } from './TodayInfo.props';
 import styles from './TodayInfo.module.scss';
 
-export const TodayInfo: FC<HTMLAttributes<HTMLDivElement>> = ({
+export const TodayInfo: FC<TodayInfoProps> = ({
+  precipitationDescription,
+  pressureDescription,
+  temperatureDescription,
+  windDescription,
   className,
   ...props
 }) => {
@@ -12,18 +16,28 @@ export const TodayInfo: FC<HTMLAttributes<HTMLDivElement>> = ({
     return classNames(styles.today__info, className);
   }, [className]);
 
+  const temperature = `${Math.floor(temperatureDescription)}°`;
+  const pressure = `${pressureDescription} мм ртутного столба`;
+  const wind = `${windDescription} м/с`;
+
   return (
     <div {...props} className={todayInfoClassname}>
-      {WEATHER_DATA.map((element) => {
-        return (
-          <WeatherFeatures
-            key={element.title}
-            imageType={element.imageType}
-            title={element.title}
-            description={element.description}
-          />
-        );
-      })}
+      <WeatherFeatures
+        imageType='temp'
+        title='Температура'
+        description={temperature}
+      />
+      <WeatherFeatures
+        imageType='pressure'
+        title='Давление'
+        description={pressure}
+      />
+      <WeatherFeatures
+        imageType='precipitation'
+        title='Осадки'
+        description={precipitationDescription}
+      />
+      <WeatherFeatures imageType='wind' title='Ветер' description={wind} />
     </div>
   );
 };

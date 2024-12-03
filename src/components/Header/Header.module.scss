@@ -1,3 +1,6 @@
+@use '../../styles/variables.scss' as v;
+@use '../../styles/theme.scss';
+
 .header {
   font-size: 16px;
   max-width: 1200px;
@@ -29,4 +32,21 @@
 
 .themeToggler {
   cursor: pointer;
+}
+
+.input__group {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.input {
+  background-color: var(#{--card-background-color-default});
+  padding: 10px 20px;
+  box-shadow: v.$box-shadow;
+  border: none;
+  border-radius: 10px;
+  color: var(#{--text-primary-color-default});
+  font-size: 18px;
+  transition: background-color 0.3s ease;
 }
