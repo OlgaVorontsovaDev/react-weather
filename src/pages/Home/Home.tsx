@@ -10,11 +10,12 @@ import { useCity } from '../../hooks/useCity';
 import { filterForecastData } from '../../services/filterForecastData';
 import { ForecastItem } from '../../store/types/forecast.types';
 import styles from './Home.module.scss';
+import { Paragraph } from '../../components/Paragraph';
 
 export const Home = () => {
   const dispatch = useCustomDispatch();
   const { city } = useCity();
-  const { weather } = useCustomSelector(
+  const { weather, isLoading, response } = useCustomSelector(
     (state) => state.currentWeatherSliceReducer
   );
   const { forecast } = useCustomSelector((state) => state.forecastSliceReducer);
@@ -34,6 +35,16 @@ export const Home = () => {
       setDailyForecast(filterForecastData(forecast));
     }
   }, [forecast]);
+
+  if (isLoading) {
+    return (
+      <Paragraph color='primary' size={36} text='Идёт загрузка данных ...' />
+    );
+  }
+
+  if (response.status !== 200) {
+    return <Paragraph color='primary' size={36} text={response.message} />;
+  }
 
   return (
     <div className={styles.home__container}>
