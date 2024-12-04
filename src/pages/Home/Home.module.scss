@@ -8,3 +8,11 @@
   justify-content: space-between;
   margin-bottom: 40px;
 }
+
+@media (max-width: 590px) {
+  .home {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+}

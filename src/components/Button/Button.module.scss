@@ -25,3 +25,9 @@
     color: var(#{--text-primary-color-default});
   }
 }
+
+@media (max-width: 991px) {
+  .button {
+    font-size: 14px;
+  }
+}

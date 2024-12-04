@@ -32,25 +32,50 @@ export const Today: FC<TodayProps> = ({
       <div className={styles.today__block__main__info}>
         <div className={styles.today__block__temp}>
           {temp <= 0 ? (
-            <Paragraph text={`${temp}°`} color='accent' size={96} />
+            <Paragraph
+              text={`${temp}°`}
+              color='accent'
+              size={96}
+              className={styles.text__temp}
+            />
           ) : (
-            <Paragraph text={`+${temp}°`} color='accent' size={96} />
+            <Paragraph
+              text={`+${temp}°`}
+              color='accent'
+              size={96}
+              className={styles.text__temp}
+            />
           )}
           {city.length > 11 ? (
-            <Paragraph text={city} color='primary' size={25} />
+            <Paragraph
+              text={city}
+              color='primary'
+              size={25}
+              className={styles.text__city}
+            />
           ) : (
-            <Paragraph text={city} color='primary' size={36} />
+            <Paragraph
+              text={city}
+              color='primary'
+              size={36}
+              className={styles.text__city}
+            />
           )}
         </div>
-        <WeatherPicture type={image} />
+        <WeatherPicture type={image} className={styles.picture} />
       </div>
       <div className={styles.today__block__description}>
-        <Paragraph text={capitalizedDescr} color='secondary' size={25} />
+        <Paragraph
+          text={capitalizedDescr}
+          color='secondary'
+          size={25}
+          className={styles.text__description}
+        />
         <Paragraph
           text={`Влажность: ${humidity}%`}
           color='secondary'
           size={25}
-          className={styles.time}
+          className={styles.text__humidity}
         />
       </div>
     </div>

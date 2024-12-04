@@ -38,7 +38,7 @@ export const Header = () => {
         <img src={AppLogo} alt='logo' className={styles.logo} />
         <p className={styles.title}>React Weather</p>
       </div>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper__input__group}>
         <img
           src={ThemeToggler}
           alt='theme-toggler'

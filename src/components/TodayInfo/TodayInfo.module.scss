@@ -19,3 +19,62 @@
   justify-content: center;
   user-select: none;
 }
+
+@media (max-width: 1299px) {
+  .today__info {
+    width: 700px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .today__info {
+    width: 680px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 1099px) {
+  .today__info {
+    width: 560px;
+  }
+}
+
+@media (max-width: 991px) {
+  .today__info {
+    width: 420px;
+    height: 230px;
+  }
+}
+
+@media (max-width: 767px) {
+  .today__info {
+    width: 390px;
+  }
+}
+
+@media (max-width: 720px) {
+  .today__info {
+    height: 290px;
+    gap: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .today__info {
+    padding: 16px;
+    width: 370px;
+  }
+}
+
+@media (max-width: 610px) {
+  .today__info {
+    width: 350px;
+  }
+}
+
+@media (max-width: 590px) {
+  .today__info {
+    width: 260px;
+  }
+}

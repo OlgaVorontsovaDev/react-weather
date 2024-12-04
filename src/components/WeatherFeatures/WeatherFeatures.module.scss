@@ -21,3 +21,26 @@
     transform: translateX(-50%) translateY(-50%);
   }
 }
+
+@media (max-width: 991px) {
+  .features {
+    .text {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 590px) {
+  .features {
+    gap: 12px;
+    .text {
+      font-size: 10px;
+    }
+  }
+}
