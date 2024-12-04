@@ -45,7 +45,7 @@ export const Home = () => {
           image={weather.weather[0].main}
           humidity={weather.main.humidity}
           city={weather.name}
-          visibility={weather.visibility}
+          description={weather.weather[0].description}
         />
         <TodayInfo
           temperatureDescription={weather.main.temp}

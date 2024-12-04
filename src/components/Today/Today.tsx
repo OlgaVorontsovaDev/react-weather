@@ -10,7 +10,7 @@ export const Today: FC<TodayProps> = ({
   image,
   humidity,
   city,
-  visibility,
+  description,
   className,
   ...props
 }) => {
@@ -19,6 +19,13 @@ export const Today: FC<TodayProps> = ({
   }, [className]);
 
   const temp = Math.floor(temperature);
+
+  const capitalizeFirstLetter = (str: string) => {
+    if (str.trim().length === 0) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  };
+
+  const capitalizedDescr = capitalizeFirstLetter(description);
 
   return (
     <div {...props} className={todayCassname}>
@@ -37,17 +44,15 @@ export const Today: FC<TodayProps> = ({
         </div>
         <WeatherPicture type={image} />
       </div>
-      <Paragraph
-        text={`Влажность: ${humidity}%`}
-        color='secondary'
-        size={25}
-        className={styles.time}
-      />
-      <Paragraph
-        text={`Видимость: ${visibility} метров`}
-        color='secondary'
-        size={25}
-      />
+      <div className={styles.today__block__description}>
+        <Paragraph text={capitalizedDescr} color='secondary' size={25} />
+        <Paragraph
+          text={`Влажность: ${humidity}%`}
+          color='secondary'
+          size={25}
+          className={styles.time}
+        />
+      </div>
     </div>
   );
 };

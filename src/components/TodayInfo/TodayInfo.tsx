@@ -18,7 +18,7 @@ export const TodayInfo: FC<TodayInfoProps> = ({
 
   const temperature = `${Math.floor(temperatureDescription)}°`;
   const pressure = `${pressureDescription} мм ртутного столба`;
-  const wind = `${windDescription} м/с`;
+  const wind = `${Math.ceil(windDescription)} м/с`;
 
   return (
     <div {...props} className={todayInfoClassname}>

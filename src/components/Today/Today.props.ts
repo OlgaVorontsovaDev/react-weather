@@ -5,7 +5,7 @@ type Today = {
   image: string;
   humidity: number;
   city: string;
-  visibility: number;
+  description: string;
 };
 
 export type TodayProps = HTMLAttributes<HTMLDivElement> & Today;
