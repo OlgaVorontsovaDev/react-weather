@@ -9,12 +9,13 @@
   box-shadow: v.$box-shadow;
   background-color: var(#{--background-color-default});
   padding: 20px;
+  user-select: none;
 
   .today__block__main__info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     align-items: center;
   }
 
@@ -25,5 +26,11 @@
 
   .time {
     margin-bottom: 10px;
+  }
+
+  .today__block__description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

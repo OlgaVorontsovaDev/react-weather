@@ -13,19 +13,19 @@ export type WeatherResponse = {
   cod: number;
 };
 
-export type Coord = {
+type Coord = {
   lon: number;
   lat: number;
 };
 
-export type Weather = {
+type Weather = {
   id: number;
   main: string;
   description: string;
   icon: string;
 };
 
-export type Main = {
+type Main = {
   temp: number;
   pressure: number;
   humidity: number;
@@ -33,16 +33,16 @@ export type Main = {
   temp_max: number;
 };
 
-export type Wind = {
+type Wind = {
   speed: number;
   deg: number;
 };
 
-export type Clouds = {
+type Clouds = {
   all: number;
 };
 
-export type Sys = {
+type Sys = {
   type: number;
   id: number;
   message: number;

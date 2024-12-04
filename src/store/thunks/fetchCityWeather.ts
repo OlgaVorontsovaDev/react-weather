@@ -4,9 +4,9 @@ import {
   fetchCurrentWeather,
   fetchCurrentWeatherSuccess,
   fetchCurrentWeatherError,
-} from '../slices';
+} from '../slices/currentWeatherSlice';
 
-export const fetchWeather =
+export const fetchCityWeather =
   (payload: string) => async (dispatch: AppDispatch) => {
     dispatch(fetchCurrentWeather());
     const res = await WeatherService.getCurrentWeather(payload);

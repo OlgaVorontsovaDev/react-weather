@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import { WeatherPictureProps } from './WeatherPicture.props';
 import Ash from '../../assets/icons/Ash.svg';
 import Drizzle from '../../assets/icons/Drizzle.svg';
 import RainSVG from '../../assets/icons/RainSVG.svg';
@@ -13,8 +15,6 @@ import Tornado from '../../assets/icons/Tornado.svg';
 import Clear from '../../assets/icons/Clear.svg';
 import Clouds from '../../assets/icons/Clouds.svg';
 import Smoke from '../../assets/icons/Smoke.svg';
-import { FC } from 'react';
-import { WeatherPictureProps } from './WeatherPicture.props';
 
 export const WeatherPicture: FC<WeatherPictureProps> = ({
   type,

@@ -1,13 +1,33 @@
 @use '../../styles/theme.scss';
 
 .card {
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 300px;
   background-color: var(#{--card-background-color-default});
   border-radius: 12px;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: start;
+  user-select: none;
+
+  .card__date,
+  .card__pressure,
+  .card__dscription {
+    margin-bottom: 12px;
+  }
+
+  .card__dscription {
+    height: 46px;
+  }
+
+  .temperature__wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .card__icon {
+    width: 76px;
+    height: 76px;
+  }
 }

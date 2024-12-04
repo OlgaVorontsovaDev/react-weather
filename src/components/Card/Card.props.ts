@@ -1,12 +1,12 @@
 import { HTMLAttributes } from 'react';
 
 export type CardType = {
-  weekday: string;
   date: string;
+  pressure: number;
   icon: string;
-  temperature_day: string;
-  temperature_night: string;
+  temperature: number;
   description: string;
+  wind: number;
 };
 
 export type CardTypeProps = HTMLAttributes<HTMLDivElement> & CardType;
