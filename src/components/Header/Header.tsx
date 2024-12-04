@@ -54,7 +54,7 @@ export const Header = () => {
             onChange={handleInputChange}
             onKeyDown={handleEnterKeyDown}
           />
-          <Button onClick={handleButtonClick}>Поиск</Button>
+          <Button onClick={handleButtonClick}>Узнать погоду</Button>
         </div>
       </div>
     </header>
