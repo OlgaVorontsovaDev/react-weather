@@ -9,6 +9,7 @@
   box-shadow: v.$box-shadow;
   background-color: var(#{--background-color-default});
   padding: 20px;
+  user-select: none;
 
   .today__block__main__info {
     display: flex;

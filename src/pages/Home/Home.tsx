@@ -3,8 +3,6 @@ import { Today } from '../../components/Today';
 import { TodayInfo } from '../../components/TodayInfo';
 import { Card } from '../../components/Card';
 import { CardPaper } from '../../components/CardPaper';
-import { Button } from '../../components/Button';
-import { WEEK_WEATHER_DATA } from '../../mocks/WEEK_WEATHER_DATA';
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
 import { fetchCityWeather } from '../../store/thunks/fetchCityWeather';
 import { fetchCityForecast } from '../../store/thunks/fetchCityForecast';
@@ -54,32 +52,22 @@ export const Home = () => {
           windDescription={weather.wind.speed}
         />
       </div>
-      <div className={styles.filter}>
-        <div className={styles.buttons}>
-          <div className={styles.buttons__by__period}>
-            <Button isActive>На 5 дней</Button>
-            <Button>На месяц</Button>
-            <Button>На 10 дней</Button>
-          </div>
-          <Button>Отменить</Button>
-        </div>
-        <CardPaper>
-          {dailyForecast.map((element) => {
-            console.log('Element', element);
-            return (
-              <Card
-                key={element.dt_txt}
-                date={element.dt_txt.split(' ')[0]}
-                pressure={element.main.pressure}
-                icon={element.weather[0].main}
-                temperature={element.main.temp}
-                description={element.weather[0].description}
-                wind={element.wind.speed}
-              />
-            );
-          })}
-        </CardPaper>
-      </div>
+      <CardPaper>
+        {dailyForecast.map((element) => {
+          console.log('Element', element);
+          return (
+            <Card
+              key={element.dt_txt}
+              date={element.dt_txt.split(' ')[0]}
+              pressure={element.main.pressure}
+              icon={element.weather[0].main}
+              temperature={element.main.temp}
+              description={element.weather[0].description}
+              wind={element.wind.speed}
+            />
+          );
+        })}
+      </CardPaper>
     </div>
   );
 };
