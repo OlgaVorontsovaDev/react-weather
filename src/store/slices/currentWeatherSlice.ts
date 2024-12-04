@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { WeatherResponse } from '../types/types';
 import { AxiosResponse } from 'axios';
+import { WeatherResponse } from '../types/currentWeather.types';
 
 type CurrentWeather = {
   weather: WeatherResponse;
@@ -16,44 +16,44 @@ type Response = {
 const initialState: CurrentWeather = {
   weather: {
     coord: {
-      lon: -0.13,
-      lat: 51.51,
+      lon: 0,
+      lat: 0,
     },
     weather: [
       {
-        id: 300,
-        main: 'Drizzle',
-        description: 'light intensity drizzle',
-        icon: '09d',
+        id: 0,
+        main: '',
+        description: '',
+        icon: '',
       },
     ],
     base: 'stations',
     main: {
-      temp: 18.32,
-      pressure: 1012,
-      humidity: 81,
-      temp_min: 17.15,
-      temp_max: 21.15,
+      temp: 0,
+      pressure: 0,
+      humidity: 0,
+      temp_min: 0,
+      temp_max: 0,
     },
-    visibility: 10000,
+    visibility: 1,
     wind: {
-      speed: 4.1,
-      deg: 80,
+      speed: 0,
+      deg: 0,
     },
     clouds: {
-      all: 90,
+      all: 0,
     },
     dt: 1485789600,
     sys: {
       type: 1,
-      id: 5091,
-      message: 0.0103,
+      id: 0,
+      message: 0,
       country: 'GB',
-      sunrise: 1485762037,
-      sunset: 1485794875,
+      sunrise: 0,
+      sunset: 0,
     },
-    id: 2643743,
-    name: 'London',
+    id: 0,
+    name: '',
     cod: 200,
   },
 

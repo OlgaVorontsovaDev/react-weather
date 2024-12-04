@@ -24,7 +24,11 @@ export const Today: FC<TodayProps> = ({
     <div {...props} className={todayCassname}>
       <div className={styles.today__block__main__info}>
         <div className={styles.today__block__temp}>
-          <Paragraph text={`${temp}°`} color='accent' size={96} />
+          {temp <= 0 ? (
+            <Paragraph text={`${temp}°`} color='accent' size={96} />
+          ) : (
+            <Paragraph text={`+${temp}°`} color='accent' size={96} />
+          )}
           {city.length > 11 ? (
             <Paragraph text={city} color='primary' size={25} />
           ) : (

@@ -32,8 +32,8 @@ export const WeatherFeatures: FC<WeatherFeaturesProps> = ({
       <div className={styles.icon}>
         <img src={image} alt={imageType} />
       </div>
-      <Paragraph text={title} color='secondary' size={14} />
-      <Paragraph text={description} color='primary' size={14} />
+      <Paragraph text={title} color='secondary' size={18} />
+      <Paragraph text={description} color='primary' size={18} />
     </div>
   );
 };
