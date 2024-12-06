@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, useState } from 'react';
 import { themeContext, ThemeEnum } from './ThemeContext';
 import { changeSCSSRootVariables } from '../../models/changeSCSSRootVariables';
-import { localStorageApi } from '../../api';
+import { localStorageApi } from '../../localStorageApi';
 
 export const ThemeProvider: FC<PropsWithChildren> = ({
   children,

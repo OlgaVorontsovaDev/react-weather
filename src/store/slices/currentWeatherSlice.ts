@@ -1,67 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AxiosResponse } from 'axios';
 import { WeatherResponse } from '../types/currentWeather.types';
+import { AxiosResponse } from 'axios';
 
 type CurrentWeather = {
-  weather: WeatherResponse;
+  weather: WeatherResponse | null;
   isLoading: boolean;
-  response: Response;
-};
-
-type Response = {
-  status: number;
-  message: string;
+  error: null | string;
 };
 
 const initialState: CurrentWeather = {
-  weather: {
-    coord: {
-      lon: 0,
-      lat: 0,
-    },
-    weather: [
-      {
-        id: 0,
-        main: '',
-        description: '',
-        icon: '',
-      },
-    ],
-    base: 'stations',
-    main: {
-      temp: 0,
-      pressure: 0,
-      humidity: 0,
-      temp_min: 0,
-      temp_max: 0,
-    },
-    visibility: 1,
-    wind: {
-      speed: 0,
-      deg: 0,
-    },
-    clouds: {
-      all: 0,
-    },
-    dt: 1485789600,
-    sys: {
-      type: 1,
-      id: 0,
-      message: 0,
-      country: 'GB',
-      sunrise: 0,
-      sunset: 0,
-    },
-    id: 0,
-    name: '',
-    cod: 200,
-  },
-
+  weather: null,
   isLoading: false,
-  response: {
-    status: 0,
-    message: '',
-  },
+  error: null,
 };
 
 export const currentWeatherSlice = createSlice({
@@ -70,27 +20,19 @@ export const currentWeatherSlice = createSlice({
   reducers: {
     fetchCurrentWeather(state) {
       state.isLoading = true;
+      state.error = null;
     },
     fetchCurrentWeatherSuccess(
       state,
       action: PayloadAction<AxiosResponse<WeatherResponse>>
     ) {
       state.isLoading = false;
+      state.error = null;
       state.weather = action.payload.data;
-      state.response = {
-        status: action.payload.status,
-        message: action.payload.statusText,
-      };
     },
-    fetchCurrentWeatherError(
-      state,
-      action: PayloadAction<AxiosResponse<WeatherResponse>>
-    ) {
+    fetchCurrentWeatherError(state, action: PayloadAction<string>) {
       state.isLoading = false;
-      state.response = {
-        status: action.payload.status,
-        message: action.payload.statusText,
-      };
+      state.error = action.payload;
     },
   },
 });

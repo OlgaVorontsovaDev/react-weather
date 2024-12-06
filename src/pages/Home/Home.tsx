@@ -6,29 +6,29 @@ import { CardPaper } from '../../components/CardPaper';
 import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
 import { fetchCityWeather } from '../../store/thunks/fetchCityWeather';
 import { fetchCityForecast } from '../../store/thunks/fetchCityForecast';
-import { useCity } from '../../hooks/useCity';
 import { filterForecastData } from '../../services/filterForecastData';
 import { ForecastItem } from '../../store/types/forecast.types';
-import styles from './Home.module.scss';
 import { Paragraph } from '../../components/Paragraph';
+import { localStorageApi } from '../../localStorageApi';
+import styles from './Home.module.scss';
 
 export const Home = () => {
   const dispatch = useCustomDispatch();
-  const { city } = useCity();
-  const { weather, isLoading, response } = useCustomSelector(
+  const { city } = useCustomSelector((state) => state.citySliceReducer);
+  const { weather, isLoading, error } = useCustomSelector(
     (state) => state.currentWeatherSliceReducer
   );
   const { forecast } = useCustomSelector((state) => state.forecastSliceReducer);
   const [dailyForecast, setDailyForecast] = useState<ForecastItem[]>([]);
+  const cityFromLocalStorage = localStorageApi.getCity();
+  const cityName = cityFromLocalStorage ? cityFromLocalStorage : city;
 
   useEffect(() => {
-    if (city) {
-      dispatch(fetchCityWeather(city));
-      dispatch(fetchCityForecast(city));
+    if (cityName) {
+      dispatch(fetchCityWeather(cityName));
+      dispatch(fetchCityForecast(cityName));
     }
-  }, [city, dispatch]);
-
-  const millimiters = Math.floor(weather.main.pressure * 0.750063755419211);
+  }, [cityName, dispatch]);
 
   useEffect(() => {
     if (forecast) {
@@ -36,14 +36,22 @@ export const Home = () => {
     }
   }, [forecast]);
 
+  if (error) {
+    return <Paragraph color='primary' size={36} text={error} />;
+  }
+
+  if (!cityName || weather === null) {
+    return (
+      <Paragraph color='primary' size={36} text='Введите название города' />
+    );
+  }
+
+  const millimiters = Math.floor(weather.main.pressure * 0.750063755419211);
+
   if (isLoading) {
     return (
       <Paragraph color='primary' size={36} text='Идёт загрузка данных ...' />
     );
-  }
-
-  if (response.status !== 200) {
-    return <Paragraph color='primary' size={36} text={response.message} />;
   }
 
   return (

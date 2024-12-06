@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { WeatherService } from '../../services/WeatherService';
 import {
   fetchForecast,
@@ -6,19 +7,22 @@ import {
 } from '../slices/forecastSlice';
 import { AppDispatch } from '../store';
 
+const errorMessage = 'Что-то пошло не так';
+
 export const fetchCityForecast =
-  (payload: string) => async (dispatch: AppDispatch) => {
+  (city: string) => async (dispatch: AppDispatch) => {
     dispatch(fetchForecast());
-    const result = await WeatherService.getForecast(payload);
     try {
-      if (result.status === 200) {
-        dispatch(fetchForecastSuccess(result));
-      } else {
-        dispatch(fetchForecastError(result));
-      }
+      const result = await WeatherService.getForecast(city);
+      dispatch(fetchForecastSuccess(result));
     } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message = error.message || errorMessage;
+        dispatch(fetchForecastError(message));
+        return;
+      }
       if (error instanceof Error) {
-        console.error(error);
+        dispatch(fetchForecastError(errorMessage));
       }
     }
   };
