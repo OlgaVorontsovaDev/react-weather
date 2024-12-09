@@ -5,20 +5,25 @@ import {
   fetchCurrentWeatherSuccess,
   fetchCurrentWeatherError,
 } from '../slices/currentWeatherSlice';
+import { AxiosError } from 'axios';
+
+const errorMessage = 'Что-то пошло не так';
 
 export const fetchCityWeather =
-  (payload: string) => async (dispatch: AppDispatch) => {
+  (city: string) => async (dispatch: AppDispatch) => {
     dispatch(fetchCurrentWeather());
-    const res = await WeatherService.getCurrentWeather(payload);
     try {
-      if (res.status === 200) {
-        dispatch(fetchCurrentWeatherSuccess(res));
-      } else {
-        dispatch(fetchCurrentWeatherError(res));
-      }
+      const res = await WeatherService.getCurrentWeather(city);
+      dispatch(fetchCurrentWeatherSuccess(res));
     } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        const message = error.message || errorMessage;
+        // TODO:: not found city -> Город не найден
+        dispatch(fetchCurrentWeatherError(message));
+        return;
+      }
       if (error instanceof Error) {
-        console.error(error);
+        dispatch(fetchCurrentWeatherError(errorMessage));
       }
     }
   };

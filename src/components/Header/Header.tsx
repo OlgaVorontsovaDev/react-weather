@@ -4,13 +4,13 @@ import AppLogo from '/Logo.svg';
 import ThemeToggler from '../../assets/icons/themeToggler.svg';
 import { useTheme } from '../../hooks/useTheme';
 import { ThemeContextType, ThemeEnum } from '../../context/theme';
-import { useCity } from '../../hooks/useCity';
-import { CityContextType } from '../../context/city';
+import { setCityNameGlobally } from '../../store/thunks/setCityNameGlobally';
+import { useCustomDispatch } from '../../hooks/store';
 import styles from './Header.module.scss';
 
 export const Header = () => {
+  const dispatch = useCustomDispatch();
   const { theme, toggleTheme }: ThemeContextType = useTheme();
-  const { city, changeCity: setCity }: CityContextType = useCity();
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleToggleTheme = () => {
@@ -22,7 +22,7 @@ export const Header = () => {
   };
 
   const handleButtonClick = () => {
-    setCity(inputValue);
+    dispatch(setCityNameGlobally(inputValue));
     setInputValue('');
   };
 
@@ -38,7 +38,7 @@ export const Header = () => {
         <img src={AppLogo} alt='logo' className={styles.logo} />
         <p className={styles.title}>React Weather</p>
       </div>
-      <div className={styles.wrapper}>
+      <div className={styles.wrapper__input__group}>
         <img
           src={ThemeToggler}
           alt='theme-toggler'
@@ -54,7 +54,9 @@ export const Header = () => {
             onChange={handleInputChange}
             onKeyDown={handleEnterKeyDown}
           />
-          <Button onClick={handleButtonClick}>Узнать погоду</Button>
+          <Button onClick={handleButtonClick} className={styles.btn}>
+            Узнать погоду
+          </Button>
         </div>
       </div>
     </header>

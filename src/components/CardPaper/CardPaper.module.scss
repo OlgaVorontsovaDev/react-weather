@@ -9,8 +9,17 @@
   border-radius: 0 0 16px 16px;
   background-color: var(#{--paper-background-color-default});
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s ease;
+}
+
+@media (max-width: 991px) {
+  .card__paper {
+    height: 100%;
+    gap: 20px;
+    justify-content: start;
+  }
 }

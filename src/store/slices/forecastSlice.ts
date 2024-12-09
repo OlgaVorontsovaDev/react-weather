@@ -3,41 +3,15 @@ import { AxiosResponse } from 'axios';
 import { ForecastResponse } from '../types/forecast.types';
 
 type WeatherForecast = {
-  forecast: ForecastResponse;
+  forecast: ForecastResponse | null;
   isLoading: boolean;
-  response: Response;
-};
-
-type Response = {
-  status: number;
-  message: string;
+  error: string | null;
 };
 
 const initialState: WeatherForecast = {
-  forecast: {
-    cod: '200',
-    message: 0,
-    cnt: 40,
-    list: [],
-    city: {
-      id: 0,
-      name: '',
-      coord: {
-        lat: 0,
-        lon: 0,
-      },
-      country: '',
-      population: 0,
-      timezone: 0,
-      sunrise: 0,
-      sunset: 0,
-    },
-  },
+  forecast: null,
   isLoading: false,
-  response: {
-    status: 0,
-    message: '',
-  },
+  error: null,
 };
 
 export const forecastSlice = createSlice({
@@ -46,6 +20,7 @@ export const forecastSlice = createSlice({
   reducers: {
     fetchForecast(state) {
       state.isLoading = true;
+      state.error = null;
     },
     fetchForecastSuccess(
       state,
@@ -53,20 +28,11 @@ export const forecastSlice = createSlice({
     ) {
       state.isLoading = false;
       state.forecast = action.payload.data;
-      state.response = {
-        status: action.payload.status,
-        message: action.payload.statusText,
-      };
+      state.error = null;
     },
-    fetchForecastError(
-      state,
-      action: PayloadAction<AxiosResponse<ForecastResponse>>
-    ) {
+    fetchForecastError(state, action: PayloadAction<string>) {
       state.isLoading = false;
-      state.response = {
-        status: action.payload.status,
-        message: action.payload.statusText,
-      };
+      state.error = action.payload;
     },
   },
 });

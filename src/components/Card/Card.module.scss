@@ -31,3 +31,35 @@
     height: 76px;
   }
 }
+
+@media (max-width: 1199px) {
+  .card {
+    width: 180px;
+
+    .card__icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    .card__dscription {
+      height: 50px;
+    }
+
+    .card__pressure,
+    .card__dscription {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media (max-width: 1099px) {
+  .card {
+    width: 160px;
+  }
+}
+
+@media (max-width: 991px) {
+  .card {
+    width: 180px;
+  }
+}
